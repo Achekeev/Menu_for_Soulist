@@ -8,12 +8,13 @@ class BranchSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class MenuSubItemSerializer(serializers.ModelSerializer):
-    menuitems = MenuItemSerializer(many=True, read_only=True)
+
+class MenuCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = MenuSubItems
-        fields = ('id', 'title', 'menuitems')
+        model = MenuCategory
+        fields = '__all__'
+        depth = 1
 
 
 class MenuItemSerializer(serializers.ModelSerializer):
@@ -21,6 +22,17 @@ class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItem
         fields = '__all__'
+        depth = 1
+
+class MenuSubItemSerializer(serializers.ModelSerializer):
+    menuitems = MenuItemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = MenuSubItems
+        fields = ('id', 'title', 'menuitems')
+        depth = 1
+
+
 
 
 class MenuPositionSerializer(serializers.ModelSerializer):
@@ -28,10 +40,4 @@ class MenuPositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuPosition
         fields = ('id', 'name', 'weight', 'price', 'picture', 'menusubitems')
-
-
-class MenuCategorySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = MenuCategory
-        fields = '__all__'
+        depth = 1
