@@ -16,4 +16,4 @@ python manage.py migrate
 python manage.py collectstatic --noinput
 
 
-gunicorn core.wsgi --bind 0.0.0.0:80 --workers 4 --threads 4
+gunicorn Menu_For_Soulist.wsgi --bind 0.0.0.0:8080 --workers 4 --threads 4
