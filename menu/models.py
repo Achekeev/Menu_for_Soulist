@@ -52,8 +52,8 @@ class MenuSubItems(models.Model):
 
 class MenuPosition(models.Model):
     name = models.CharField(max_length=100)
-    weight = models.FloatField(blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    weight = models.CharField(max_length=255, blank=True, null=True)
+    price = models.CharField(max_length=255)
     picture = models.ImageField(upload_to='menu_pictures/', blank=True, null=True)
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE, related_name='menuitems_positions')
     menu_sub_item = models.ForeignKey(MenuSubItems, on_delete=models.CASCADE, blank=True, null=True, related_name='menusubitems')
