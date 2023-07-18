@@ -5,5 +5,14 @@ from .models import Branch, MenuCategory, MenuItem, MenuPosition, MenuSubItems
 admin.site.register(Branch)
 admin.site.register(MenuCategory)
 admin.site.register(MenuItem)
-admin.site.register(MenuPosition)
-admin.site.register(MenuSubItems)
+
+
+class MenuPositionInline(admin.StackedInline):
+    model = MenuPosition
+
+
+class MenuSubItemsAdmin(admin.ModelAdmin):
+    inlines = [MenuPositionInline,]
+
+
+admin.site.register(MenuSubItems, MenuSubItemsAdmin)
