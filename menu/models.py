@@ -52,7 +52,7 @@ class MenuSubItems(models.Model):
 
 class MenuPosition(models.Model):
     name = models.CharField(max_length=100)
-    weight = models.FloatField()
+    weight = models.FloatField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     picture = models.ImageField(upload_to='menu_pictures/', blank=True, null=True)
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE, related_name='menuitems_positions')
