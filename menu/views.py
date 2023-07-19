@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .models import Branch, MenuCategory, MenuItem, MenuPosition
+from .models import Branch, MenuCategory, MenuItem, MenuPosition, MenuSubItems
 from .serializers import (
     BranchSerializer, MenuCategorySerializer,
     MenuItemSerializer, MenuSubItemSerializer, MenuPositionSerializer
@@ -31,12 +31,12 @@ class MenuItemRetrieveAPIView(generics.RetrieveAPIView):
 
 
 class MenuSubItemRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = MenuItem.objects.all()
+    queryset = MenuSubItems.objects.all()
     serializer_class = MenuSubItemSerializer
 
 
 class MenuSubItemListAPIView(generics.ListAPIView):
-    queryset = MenuItem.objects.all()
+    queryset = MenuSubItems.objects.all()
     serializer_class = MenuSubItemSerializer
 
 
